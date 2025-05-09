@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_component_bmw_sections",
+  "info": {
+    "displayName": "Details-only",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Details": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_component_hospital_sections",
+  "info": {
+    "displayName": "Ttitle_and_Details",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Details": {
+      "type": "richtext"
+    }
+  }
+}

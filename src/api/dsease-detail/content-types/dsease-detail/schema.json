@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dsease_details",
+  "info": {
+    "singularName": "dsease-detail",
+    "pluralName": "dsease-details",
+    "displayName": "DiseaseDetail",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "richtext"
+    },
+    "VideoTitle": {
+      "type": "string"
+    },
+    "VideoSubTitle": {
+      "type": "string"
+    },
+    "YoutubeLink": {
+      "type": "string"
+    },
+    "Thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

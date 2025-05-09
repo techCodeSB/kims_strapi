@@ -1,0 +1,159 @@
+{
+  "kind": "collectionType",
+  "collectionName": "specialities",
+  "info": {
+    "singularName": "speciality",
+    "pluralName": "specialities",
+    "displayName": "Speciality"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "ShowinCMS": {
+      "type": "boolean",
+      "default": true
+    },
+    "IDinHIS": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "ShowinFeaturedList": {
+      "type": "boolean",
+      "default": false
+    },
+    "ParentSpeciality": {
+      "type": "customField",
+      "default": "[]",
+      "options": [
+        "test",
+        "test1",
+        "test2"
+      ],
+      "required": true,
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "OrderInFeaturedList": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "select_hospitals": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hospital.hospital",
+      "mappedBy": "speciality"
+    },
+    "OrderInMasterList": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "SpecialitySlug": {
+      "type": "uid",
+      "targetField": "Title",
+      "required": true
+    },
+    "ShortDescription": {
+      "type": "text"
+    },
+    "ChooseSpecialityCategory": {
+      "type": "enumeration",
+      "enum": [
+        "Other Specialities",
+        "Center of Excellence"
+      ],
+      "default": "Other Specialities"
+    },
+    "MetaTitle": {
+      "type": "string"
+    },
+    "IconImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "FeaturedImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "MetaDescription": {
+      "type": "text"
+    },
+    "ExtraHeaderCode": {
+      "type": "text"
+    },
+    "MetaKeyword": {
+      "type": "string"
+    },
+    "ShowinHeader": {
+      "type": "boolean",
+      "default": false
+    },
+    "ShowinFooter": {
+      "type": "boolean",
+      "default": false
+    },
+    "ViewingMode": {
+      "type": "enumeration",
+      "enum": [
+        "Popup",
+        "Details Page"
+      ],
+      "default": "Details Page"
+    },
+    "OverviewSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.hospital-section"
+    },
+    "ConditionsAndTreatmentsSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.testimonial-section"
+    },
+    "MeetOurExpertSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.meet-our-expert-section"
+    },
+    "FAQSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.faq-section"
+    },
+    "TestimonialSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.testimonial-section"
+    },
+    "HospitalSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.hospital-section"
+    },
+    "Procedure": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::procedure.procedure",
+      "inversedBy": "SelectSpeciality"
+    },
+    "disease": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::disease.disease",
+      "inversedBy": "SelectSpeciality"
+    }
+  }
+}

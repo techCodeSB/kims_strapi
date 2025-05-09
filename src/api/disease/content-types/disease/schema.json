@@ -1,0 +1,119 @@
+{
+  "kind": "collectionType",
+  "collectionName": "diseases",
+  "info": {
+    "singularName": "disease",
+    "pluralName": "diseases",
+    "displayName": "Disease"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "ShowInFeaturedList": {
+      "type": "boolean",
+      "default": false
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "OrderInFeaturedList": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "SelectSpeciality": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::speciality.speciality",
+      "mappedBy": "disease"
+    },
+    "SelectProcedure": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::procedure.procedure",
+      "mappedBy": "disease"
+    },
+    "MetaTitle": {
+      "type": "string"
+    },
+    "SelectHospital": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hospital.hospital",
+      "mappedBy": "disease"
+    },
+    "MetaDescription": {
+      "type": "text"
+    },
+    "FeaturedIcon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "FeaturedImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "MetaKeyword": {
+      "type": "string"
+    },
+    "ViewingMode": {
+      "type": "enumeration",
+      "enum": [
+        "Popup",
+        "Details Page"
+      ],
+      "default": "Popup"
+    },
+    "ShortDescription": {
+      "type": "text"
+    },
+    "ExtraHeaderCode": {
+      "type": "text"
+    },
+    "Details": {
+      "type": "richtext"
+    },
+    "OverviewSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.hospital-section"
+    },
+    "USPSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.title-and-image"
+    },
+    "MeetOurExpertSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.blog-section"
+    },
+    "ConditionandTreatmentSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.blog-section"
+    },
+    "TestimonialSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.blog-section"
+    },
+    "FAQSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.faq-section"
+    }
+  }
+}

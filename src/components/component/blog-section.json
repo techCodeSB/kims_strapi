@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_component_blog_sections",
+  "info": {
+    "displayName": "TitleOnly",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    }
+  }
+}

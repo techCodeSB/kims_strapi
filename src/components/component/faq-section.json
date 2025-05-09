@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_component_faq_sections",
+  "info": {
+    "displayName": "FAQ Section",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Question": {
+      "type": "string"
+    },
+    "Answer": {
+      "type": "richtext"
+    }
+  }
+}

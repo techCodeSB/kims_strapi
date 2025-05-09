@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_component_condition_and_treatment_sections",
+  "info": {
+    "displayName": "Condition & Treatment Section",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    }
+  }
+}

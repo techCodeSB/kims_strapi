@@ -1,0 +1,150 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hospitals",
+  "info": {
+    "singularName": "hospital",
+    "pluralName": "hospitals",
+    "displayName": "Hospital",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "hospitalSlug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "ContactNo": {
+      "type": "string"
+    },
+    "AppointmentNo": {
+      "type": "string"
+    },
+    "IDinHIS": {
+      "type": "string"
+    },
+    "EmergencyNo": {
+      "type": "string"
+    },
+    "FeaturedImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Email": {
+      "type": "email"
+    },
+    "ShortDescription": {
+      "type": "text"
+    },
+    "Address": {
+      "type": "text"
+    },
+    "Rating": {
+      "type": "integer",
+      "default": 0
+    },
+    "OrderInMasterList": {
+      "type": "integer",
+      "default": 0
+    },
+    "MapURL": {
+      "type": "string"
+    },
+    "MetaTitle": {
+      "type": "string"
+    },
+    "MetaDescription": {
+      "type": "text"
+    },
+    "MetaKeyword": {
+      "type": "text"
+    },
+    "ExtraHeaderCode": {
+      "type": "text"
+    },
+    "OverviewImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "DetailsOverview": {
+      "type": "richtext"
+    },
+    "ConditionAndTreatmentSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.condition-and-treatment-section"
+    },
+    "MeetOurExpertSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.meet-our-expert-section"
+    },
+    "TestimonialSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.testimonial-section"
+    },
+    "HospitalSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.hospital-section"
+    },
+    "FAQSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.faq-section"
+    },
+    "BlogSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.blog-section"
+    },
+    "BMWSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.bmw-section"
+    },
+    "speciality": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::speciality.speciality",
+      "inversedBy": "select_hospitals"
+    },
+    "location": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::location.location"
+    },
+    "languages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::language.language",
+      "mappedBy": "hospital"
+    },
+    "Procedure": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::procedure.procedure",
+      "inversedBy": "SelectHospital"
+    },
+    "disease": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::disease.disease",
+      "inversedBy": "SelectHospital"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_component_title_and_images",
+  "info": {
+    "displayName": "Title_and_image"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "FeaturedImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
