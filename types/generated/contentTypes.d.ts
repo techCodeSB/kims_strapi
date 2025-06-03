@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiDiseaseDisease extends Struct.CollectionTypeSchema {
   collectionName: 'diseases';
   info: {
+    description: '';
     displayName: 'Disease';
     pluralName: 'diseases';
     singularName: 'disease';
@@ -380,66 +381,21 @@ export interface ApiDiseaseDisease extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    ConditionandTreatmentSection: Schema.Attribute.Component<
-      'component.blog-section',
-      false
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Details: Schema.Attribute.RichText;
-    ExtraHeaderCode: Schema.Attribute.Text;
-    FAQSection: Schema.Attribute.Component<'component.faq-section', true>;
-    FeaturedIcon: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    FeaturedImage: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::disease.disease'
     > &
       Schema.Attribute.Private;
-    MeetOurExpertSection: Schema.Attribute.Component<
-      'component.blog-section',
-      false
-    >;
-    MetaDescription: Schema.Attribute.Text;
-    MetaKeyword: Schema.Attribute.String;
-    MetaTitle: Schema.Attribute.String;
-    OrderInFeaturedList: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<0>;
-    OverviewSection: Schema.Attribute.Component<
-      'component.hospital-section',
-      false
-    >;
     publishedAt: Schema.Attribute.DateTime;
-    SelectHospital: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::hospital.hospital'
-    >;
-    SelectProcedure: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::procedure.procedure'
-    >;
-    SelectSpeciality: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::speciality.speciality'
-    >;
-    ShortDescription: Schema.Attribute.Text;
-    ShowInFeaturedList: Schema.Attribute.Boolean &
-      Schema.Attribute.DefaultTo<false>;
     Slug: Schema.Attribute.UID<'Title'>;
-    TestimonialSection: Schema.Attribute.Component<
-      'component.blog-section',
-      false
-    >;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    USPSection: Schema.Attribute.Component<'component.title-and-image', false>;
-    ViewingMode: Schema.Attribute.Enumeration<['Popup', 'Details Page']> &
-      Schema.Attribute.DefaultTo<'Popup'>;
   };
 }
 
@@ -448,33 +404,164 @@ export interface ApiDseaseDetailDseaseDetail
   collectionName: 'dsease_details';
   info: {
     description: '';
-    displayName: 'DiseaseDetail';
+    displayName: 'Disease Details';
     pluralName: 'dsease-details';
     singularName: 'dsease-detail';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Content: Schema.Attribute.RichText;
+    ConditionAndTreatmentSection: Schema.Attribute.Component<
+      'component.blog-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    Details: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ExtraHeaderCode: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FAQSection: Schema.Attribute.Component<'component.faq-section', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FeaturedIcon: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FeaturedImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Hospitals: Schema.Attribute.Relation<'oneToMany', 'api::hospital.hospital'>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::dsease-detail.dsease-detail'
+    >;
+    MeetOurExpertSection: Schema.Attribute.Component<
+      'component.blog-section',
+      false
     > &
-      Schema.Attribute.Private;
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MetaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MetaKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MetaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    OrderInFeaturedList: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<0>;
+    OverviewSection: Schema.Attribute.Component<
+      'component.hospital-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Procedures: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::procedure.procedure'
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    Thumbnail: Schema.Attribute.Media<'images'>;
-    Title: Schema.Attribute.String;
+    ShortDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ShowInFeaturedList: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    specialities: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::speciality.speciality'
+    >;
+    TestimonialSection: Schema.Attribute.Component<
+      'component.blog-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    VideoSubTitle: Schema.Attribute.String;
-    VideoTitle: Schema.Attribute.String;
-    YoutubeLink: Schema.Attribute.String;
+    USPSection: Schema.Attribute.Component<'component.title-and-image', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ViewingMode: Schema.Attribute.Enumeration<['Popup', 'Details Page']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -489,98 +576,200 @@ export interface ApiHospitalHospital extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Address: Schema.Attribute.Text;
-    AppointmentNo: Schema.Attribute.String;
-    BlogSection: Schema.Attribute.Component<'component.blog-section', false>;
-    BMWSection: Schema.Attribute.Component<'component.bmw-section', false>;
+    Address: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    AppointmentNo: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    BlogSection: Schema.Attribute.Component<'component.blog-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    BMWSection: Schema.Attribute.Component<'component.bmw-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     ConditionAndTreatmentSection: Schema.Attribute.Component<
       'component.condition-and-treatment-section',
       false
-    >;
-    ContactNo: Schema.Attribute.String;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ContactNo: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    DetailsOverview: Schema.Attribute.RichText;
-    disease: Schema.Attribute.Relation<'manyToOne', 'api::disease.disease'>;
-    Email: Schema.Attribute.Email;
-    EmergencyNo: Schema.Attribute.String;
-    ExtraHeaderCode: Schema.Attribute.Text;
-    FAQSection: Schema.Attribute.Component<'component.faq-section', true>;
-    FeaturedImage: Schema.Attribute.Media<'images'>;
+    DetailsOverview: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    disease_detail: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::dsease-detail.dsease-detail'
+    >;
+    Email: Schema.Attribute.Email &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    EmergencyNo: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ExtraHeaderCode: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FAQSection: Schema.Attribute.Component<'component.faq-section', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FeaturedImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     HospitalSection: Schema.Attribute.Component<
       'component.hospital-section',
       false
-    >;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     hospitalSlug: Schema.Attribute.UID<'Title'>;
-    IDinHIS: Schema.Attribute.String;
-    languages: Schema.Attribute.Relation<'oneToMany', 'api::language.language'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    IDinHIS: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::hospital.hospital'
-    > &
-      Schema.Attribute.Private;
+    >;
     location: Schema.Attribute.Relation<'oneToOne', 'api::location.location'>;
-    MapURL: Schema.Attribute.String;
+    MapURL: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     MeetOurExpertSection: Schema.Attribute.Component<
       'component.meet-our-expert-section',
       false
-    >;
-    MetaDescription: Schema.Attribute.Text;
-    MetaKeyword: Schema.Attribute.Text;
-    MetaTitle: Schema.Attribute.String;
-    OrderInMasterList: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    OverviewImage: Schema.Attribute.Media<'images'>;
-    Procedure: Schema.Attribute.Relation<
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MetaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MetaKeyword: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MetaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    OrderInMasterList: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<0>;
+    OverviewImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    procedure_detail: Schema.Attribute.Relation<
       'manyToOne',
-      'api::procedure.procedure'
+      'api::procedure-detail.procedure-detail'
     >;
     publishedAt: Schema.Attribute.DateTime;
-    Rating: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    ShortDescription: Schema.Attribute.Text;
-    speciality: Schema.Attribute.Relation<
+    Rating: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<0>;
+    ShortDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    specialty_detail: Schema.Attribute.Relation<
       'manyToOne',
-      'api::speciality.speciality'
+      'api::specialty-detail.specialty-detail'
     >;
     TestimonialSection: Schema.Attribute.Component<
       'component.testimonial-section',
       false
-    >;
-    Title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiLanguageLanguage extends Struct.CollectionTypeSchema {
-  collectionName: 'languages';
-  info: {
-    description: '';
-    displayName: 'Language';
-    pluralName: 'languages';
-    singularName: 'language';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    hospital: Schema.Attribute.Relation<'manyToOne', 'api::hospital.hospital'>;
-    isDefault: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::language.language'
     > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    Slug: Schema.Attribute.UID<'Title'>;
-    Title: Schema.Attribute.String;
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -621,6 +810,10 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.UID<'Title'>;
+    specialty_detail: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::specialty-detail.specialty-detail'
+    >;
     Title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -630,6 +823,166 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProcedureDetailProcedureDetail
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'procedure_details';
+  info: {
+    description: '';
+    displayName: 'Procedure Details';
+    pluralName: 'procedure-details';
+    singularName: 'procedure-detail';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Details: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FAQSection: Schema.Attribute.Component<'component.faq-section', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FeaturedIcon: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FeaturedImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Hospitals: Schema.Attribute.Relation<'oneToMany', 'api::hospital.hospital'>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::procedure-detail.procedure-detail'
+    >;
+    MeetOurExpertSection: Schema.Attribute.Component<
+      'component.blog-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MetaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MetaKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MetaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    OrderInFeaturedList: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<0>;
+    OverviewSection: Schema.Attribute.Component<
+      'component.hospital-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    ShortDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ShowInFeaturedList: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    ShowinFooter: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    ShowInHeader: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    specialty_details: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::specialty-detail.specialty-detail'
+    >;
+    TestimonialSection: Schema.Attribute.Component<
+      'component.blog-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    USPSection: Schema.Attribute.Component<'component.title-and-image', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ViewingMode: Schema.Attribute.Enumeration<['Popup', 'Details Page']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -648,63 +1001,29 @@ export interface ApiProcedureProcedure extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Details: Schema.Attribute.RichText;
-    disease: Schema.Attribute.Relation<'manyToOne', 'api::disease.disease'>;
-    FAQSection: Schema.Attribute.Component<'component.faq-section', true>;
-    FeaturedIcon: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    FeaturedImage: Schema.Attribute.Media<'images'>;
+    disease_detail: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::dsease-detail.dsease-detail'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::procedure.procedure'
     > &
       Schema.Attribute.Private;
-    MeetOurExpertSection: Schema.Attribute.Component<
-      'component.blog-section',
-      false
-    >;
-    MetaDescription: Schema.Attribute.Text;
-    MetaKeyword: Schema.Attribute.String;
-    MetaTitle: Schema.Attribute.String;
-    OrderInFeaturedList: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<0>;
-    OverviewSection: Schema.Attribute.Component<
-      'component.hospital-section',
-      false
-    >;
     publishedAt: Schema.Attribute.DateTime;
-    SelectHospital: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::hospital.hospital'
-    >;
-    SelectSpeciality: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::speciality.speciality'
-    >;
-    ShortDescription: Schema.Attribute.Text;
-    ShowInFeaturedList: Schema.Attribute.Boolean &
-      Schema.Attribute.DefaultTo<false>;
-    ShowInFooter: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    ShowInHeader: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     Slug: Schema.Attribute.UID<'Title'>;
-    TestimonialSection: Schema.Attribute.Component<
-      'component.blog-section',
-      false
-    >;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    USPSection: Schema.Attribute.Component<'component.title-and-image', false>;
-    ViewingMode: Schema.Attribute.Enumeration<['Popup', 'Details Page']> &
-      Schema.Attribute.DefaultTo<'Popup'>;
   };
 }
 
 export interface ApiSpecialitySpeciality extends Struct.CollectionTypeSchema {
   collectionName: 'specialities';
   info: {
+    description: '';
     displayName: 'Speciality';
     pluralName: 'specialities';
     singularName: 'speciality';
@@ -713,85 +1032,161 @@ export interface ApiSpecialitySpeciality extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    ChooseSpecialityCategory: Schema.Attribute.Enumeration<
-      ['Other Specialities', 'Center of Excellence']
-    > &
-      Schema.Attribute.DefaultTo<'Other Specialities'>;
-    ConditionsAndTreatmentsSection: Schema.Attribute.Component<
-      'component.testimonial-section',
-      true
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    disease: Schema.Attribute.Relation<'manyToOne', 'api::disease.disease'>;
-    ExtraHeaderCode: Schema.Attribute.Text;
-    FAQSection: Schema.Attribute.Component<'component.faq-section', true>;
-    FeaturedImage: Schema.Attribute.Media<'images'>;
-    HospitalSection: Schema.Attribute.Component<
-      'component.hospital-section',
-      false
+    disease_detail: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::dsease-detail.dsease-detail'
     >;
-    IconImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    IDinHIS: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<0>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::speciality.speciality'
     > &
       Schema.Attribute.Private;
-    MeetOurExpertSection: Schema.Attribute.Component<
-      'component.meet-our-expert-section',
+    parent_specialities: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::speciality.speciality'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    specialities: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::speciality.speciality'
+    >;
+    SpecialitySlug: Schema.Attribute.UID<'Title'> & Schema.Attribute.Required;
+    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSpecialtyDetailSpecialtyDetail
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'specialty_details';
+  info: {
+    description: '';
+    displayName: 'Specialty Details';
+    pluralName: 'specialty-details';
+    singularName: 'specialty-detail';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    BlogSection: Schema.Attribute.Component<'component.blog-section', false>;
+    ChooseSpecialityCategory: Schema.Attribute.Enumeration<
+      ['Other Specialties', 'Center of Excellence']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ConditionAndTreatmentSection: Schema.Attribute.Component<
+      'component.blog-section',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    DoctorTalkSection: Schema.Attribute.Component<
+      'component.blog-section',
       false
     >;
-    MetaDescription: Schema.Attribute.Text;
-    MetaKeyword: Schema.Attribute.String;
-    MetaTitle: Schema.Attribute.String;
-    OrderInFeaturedList: Schema.Attribute.Integer &
+    FAQSection: Schema.Attribute.Component<'component.faq-section', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FeaturedImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    HospitalSection: Schema.Attribute.Component<
+      'component.hospital-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    IconImage: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<0>;
-    OrderInMasterList: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<0>;
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::specialty-detail.specialty-detail'
+    >;
+    Locations: Schema.Attribute.Relation<'oneToMany', 'api::location.location'>;
+    MeetOurExpertSection: Schema.Attribute.Component<
+      'component.blog-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    MetaSection: Schema.Attribute.Component<'component.meta-section', false>;
     OverviewSection: Schema.Attribute.Component<
       'component.hospital-section',
       false
-    >;
-    ParentSpeciality: Schema.Attribute.JSON &
-      Schema.Attribute.Required &
-      Schema.Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        ['test', 'test1', 'test2']
-      > &
-      Schema.Attribute.DefaultTo<'[]'>;
-    Procedure: Schema.Attribute.Relation<
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    procedure_detail: Schema.Attribute.Relation<
       'manyToOne',
-      'api::procedure.procedure'
+      'api::procedure-detail.procedure-detail'
     >;
     publishedAt: Schema.Attribute.DateTime;
     select_hospitals: Schema.Attribute.Relation<
       'oneToMany',
       'api::hospital.hospital'
     >;
-    ShortDescription: Schema.Attribute.Text;
-    ShowinCMS: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    ShowinFeaturedList: Schema.Attribute.Boolean &
-      Schema.Attribute.DefaultTo<false>;
-    ShowinFooter: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    ShowinHeader: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    SpecialitySlug: Schema.Attribute.UID<'Title'> & Schema.Attribute.Required;
     TestimonialSection: Schema.Attribute.Component<
-      'component.testimonial-section',
+      'component.blog-section',
       false
-    >;
-    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    ViewingMode: Schema.Attribute.Enumeration<['Popup', 'Details Page']> &
-      Schema.Attribute.DefaultTo<'Details Page'>;
+    Viewinmode: Schema.Attribute.Component<'component.view-section', false>;
   };
 }
 
@@ -1307,10 +1702,11 @@ declare module '@strapi/strapi' {
       'api::disease.disease': ApiDiseaseDisease;
       'api::dsease-detail.dsease-detail': ApiDseaseDetailDseaseDetail;
       'api::hospital.hospital': ApiHospitalHospital;
-      'api::language.language': ApiLanguageLanguage;
       'api::location.location': ApiLocationLocation;
+      'api::procedure-detail.procedure-detail': ApiProcedureDetailProcedureDetail;
       'api::procedure.procedure': ApiProcedureProcedure;
       'api::speciality.speciality': ApiSpecialitySpeciality;
+      'api::specialty-detail.specialty-detail': ApiSpecialtyDetailSpecialtyDetail;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

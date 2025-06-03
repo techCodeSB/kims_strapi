@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_component_view_sections",
+  "info": {
+    "displayName": "ViewSection"
+  },
+  "options": {},
+  "attributes": {
+    "ShowInFeaturedList": {
+      "type": "boolean",
+      "default": false
+    },
+    "ShowInCMS": {
+      "type": "boolean",
+      "default": false
+    },
+    "OrderInFeaturedList": {
+      "type": "integer",
+      "default": 0
+    },
+    "OrderInMasterList": {
+      "type": "integer",
+      "default": 0
+    },
+    "ShowingHeader": {
+      "type": "boolean",
+      "default": false
+    },
+    "ShowingFooter": {
+      "type": "boolean",
+      "default": false
+    },
+    "ViewingMode": {
+      "type": "enumeration",
+      "enum": [
+        "Details Page",
+        "Popup"
+      ]
+    }
+  }
+}

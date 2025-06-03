@@ -14,108 +14,15 @@
     "Title": {
       "type": "string"
     },
-    "ShowInFooter": {
-      "type": "boolean",
-      "default": false
-    },
     "Slug": {
       "type": "uid",
       "targetField": "Title"
     },
-    "ShowInHeader": {
-      "type": "boolean",
-      "default": false
-    },
-    "SelectSpeciality": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::speciality.speciality",
-      "mappedBy": "Procedure"
-    },
-    "ShowInFeaturedList": {
-      "type": "boolean",
-      "default": false
-    },
-    "SelectHospital": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::hospital.hospital",
-      "mappedBy": "Procedure"
-    },
-    "OrderInFeaturedList": {
-      "type": "integer",
-      "required": true,
-      "default": 0
-    },
-    "FeaturedIcon": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "FeaturedImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "MetaTitle": {
-      "type": "string"
-    },
-    "ShortDescription": {
-      "type": "text"
-    },
-    "MetaDescription": {
-      "type": "text"
-    },
-    "ViewingMode": {
-      "type": "enumeration",
-      "enum": [
-        "Popup",
-        "Details Page"
-      ],
-      "default": "Popup"
-    },
-    "Details": {
-      "type": "richtext"
-    },
-    "OverviewSection": {
-      "type": "component",
-      "repeatable": false,
-      "component": "component.hospital-section"
-    },
-    "USPSection": {
-      "type": "component",
-      "repeatable": false,
-      "component": "component.title-and-image"
-    },
-    "MeetOurExpertSection": {
-      "type": "component",
-      "repeatable": false,
-      "component": "component.blog-section"
-    },
-    "TestimonialSection": {
-      "type": "component",
-      "repeatable": false,
-      "component": "component.blog-section"
-    },
-    "FAQSection": {
-      "type": "component",
-      "repeatable": true,
-      "component": "component.faq-section"
-    },
-    "MetaKeyword": {
-      "type": "string"
-    },
-    "disease": {
+    "disease_detail": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::disease.disease",
-      "inversedBy": "SelectProcedure"
+      "target": "api::dsease-detail.dsease-detail",
+      "inversedBy": "Procedures"
     }
   }
 }

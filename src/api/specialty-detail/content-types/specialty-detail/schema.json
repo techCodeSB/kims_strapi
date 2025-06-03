@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "dsease_details",
+  "collectionName": "specialty_details",
   "info": {
-    "singularName": "dsease-detail",
-    "pluralName": "dsease-details",
-    "displayName": "Disease Details",
+    "singularName": "specialty-detail",
+    "pluralName": "specialty-details",
+    "displayName": "Specialty Details",
     "description": ""
   },
   "options": {
@@ -18,62 +18,32 @@
   "attributes": {
     "Title": {
       "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "ShowInFeaturedList": {
-      "type": "boolean",
-      "default": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "OrderInFeaturedList": {
-      "type": "integer",
       "required": true,
-      "default": 0,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "MetaTitle": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "Hospitals": {
+    "select_hospitals": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::hospital.hospital",
-      "mappedBy": "disease_detail"
+      "mappedBy": "specialty_detail"
     },
-    "MetaDescription": {
-      "type": "text",
+    "ChooseSpecialityCategory": {
+      "type": "enumeration",
+      "enum": [
+        "Other Specialties",
+        "Center of Excellence"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "MetaKeyword": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "FeaturedIcon": {
+    "IconImage": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -99,56 +69,10 @@
         }
       }
     },
-    "ViewingMode": {
-      "type": "enumeration",
-      "enum": [
-        "Popup",
-        "Details Page"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "ExtraHeaderCode": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "ShortDescription": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "Details": {
-      "type": "richtext",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "OverviewSection": {
       "type": "component",
       "repeatable": false,
       "component": "component.hospital-section",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "USPSection": {
-      "type": "component",
-      "repeatable": false,
-      "component": "component.title-and-image",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -167,17 +91,7 @@
     },
     "ConditionAndTreatmentSection": {
       "type": "component",
-      "repeatable": false,
-      "component": "component.blog-section",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "TestimonialSection": {
-      "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "component.blog-section",
       "pluginOptions": {
         "i18n": {
@@ -195,17 +109,57 @@
         }
       }
     },
-    "Procedures": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::procedure.procedure",
-      "mappedBy": "disease_detail"
+    "TestimonialSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.blog-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
-    "specialities": {
+    "HospitalSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.hospital-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Locations": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::speciality.speciality",
-      "mappedBy": "disease_detail"
+      "target": "api::location.location",
+      "mappedBy": "specialty_detail"
+    },
+    "procedure_detail": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::procedure-detail.procedure-detail",
+      "inversedBy": "specialty_details"
+    },
+    "MetaSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.meta-section"
+    },
+    "Viewinmode": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.view-section"
+    },
+    "BlogSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.blog-section"
+    },
+    "DoctorTalkSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "component.blog-section"
     }
   }
 }

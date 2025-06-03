@@ -10,26 +10,56 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "Title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "hospitalSlug": {
       "type": "uid",
       "targetField": "Title"
     },
     "ContactNo": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "AppointmentNo": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "IDinHIS": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "EmergencyNo": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "FeaturedImage": {
       "type": "media",
@@ -37,39 +67,94 @@
       "required": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "Email": {
-      "type": "email"
+      "type": "email",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "ShortDescription": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "Address": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "Rating": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "OrderInMasterList": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "MapURL": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "MetaTitle": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "MetaDescription": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "MetaKeyword": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "ExtraHeaderCode": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "OverviewImage": {
       "type": "media",
@@ -77,74 +162,113 @@
       "required": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "DetailsOverview": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "ConditionAndTreatmentSection": {
       "type": "component",
       "repeatable": false,
-      "component": "component.condition-and-treatment-section"
+      "component": "component.condition-and-treatment-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "MeetOurExpertSection": {
       "type": "component",
       "repeatable": false,
-      "component": "component.meet-our-expert-section"
+      "component": "component.meet-our-expert-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "TestimonialSection": {
       "type": "component",
       "repeatable": false,
-      "component": "component.testimonial-section"
+      "component": "component.testimonial-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "HospitalSection": {
       "type": "component",
       "repeatable": false,
-      "component": "component.hospital-section"
+      "component": "component.hospital-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "FAQSection": {
       "type": "component",
       "repeatable": true,
-      "component": "component.faq-section"
+      "component": "component.faq-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "BlogSection": {
       "type": "component",
       "repeatable": false,
-      "component": "component.blog-section"
+      "component": "component.blog-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "BMWSection": {
       "type": "component",
       "repeatable": false,
-      "component": "component.bmw-section"
-    },
-    "speciality": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::speciality.speciality",
-      "inversedBy": "select_hospitals"
+      "component": "component.bmw-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "location": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::location.location"
     },
-    "languages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::language.language",
-      "mappedBy": "hospital"
-    },
-    "Procedure": {
+    "specialty_detail": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::procedure.procedure",
-      "inversedBy": "SelectHospital"
+      "target": "api::specialty-detail.specialty-detail",
+      "inversedBy": "select_hospitals"
     },
-    "disease": {
+    "procedure_detail": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::disease.disease",
-      "inversedBy": "SelectHospital"
+      "target": "api::procedure-detail.procedure-detail",
+      "inversedBy": "Hospitals"
+    },
+    "disease_detail": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::dsease-detail.dsease-detail",
+      "inversedBy": "Hospitals"
     }
   }
 }

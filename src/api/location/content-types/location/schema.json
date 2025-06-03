@@ -36,6 +36,12 @@
           "localized": true
         }
       }
+    },
+    "specialty_detail": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::specialty-detail.specialty-detail",
+      "inversedBy": "Locations"
     }
   }
 }

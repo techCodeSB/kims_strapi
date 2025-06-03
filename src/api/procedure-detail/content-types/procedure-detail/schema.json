@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "dsease_details",
+  "collectionName": "procedure_details",
   "info": {
-    "singularName": "dsease-detail",
-    "pluralName": "dsease-details",
-    "displayName": "Disease Details",
+    "singularName": "procedure-detail",
+    "pluralName": "procedure-details",
+    "displayName": "Procedure Details",
     "description": ""
   },
   "options": {
@@ -24,7 +24,7 @@
         }
       }
     },
-    "ShowInFeaturedList": {
+    "ShowinFooter": {
       "type": "boolean",
       "default": false,
       "pluginOptions": {
@@ -33,18 +33,18 @@
         }
       }
     },
-    "OrderInFeaturedList": {
-      "type": "integer",
-      "required": true,
-      "default": 0,
+    "ShowInHeader": {
+      "type": "boolean",
+      "default": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "MetaTitle": {
-      "type": "string",
+    "ShowInFeaturedList": {
+      "type": "boolean",
+      "default": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -55,18 +55,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::hospital.hospital",
-      "mappedBy": "disease_detail"
+      "mappedBy": "procedure_detail"
     },
-    "MetaDescription": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "MetaKeyword": {
-      "type": "string",
+    "OrderInFeaturedList": {
+      "type": "integer",
+      "default": 0,
+      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -76,7 +70,7 @@
     "FeaturedIcon": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
@@ -99,20 +93,16 @@
         }
       }
     },
-    "ViewingMode": {
-      "type": "enumeration",
-      "enum": [
-        "Popup",
-        "Details Page"
-      ],
+    "MetaTitle": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "ExtraHeaderCode": {
-      "type": "text",
+    "MetaKeyword": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -121,6 +111,26 @@
     },
     "ShortDescription": {
       "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "MetaDescription": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "ViewingMode": {
+      "type": "enumeration",
+      "enum": [
+        "Popup",
+        "Details Page"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -165,16 +175,6 @@
         }
       }
     },
-    "ConditionAndTreatmentSection": {
-      "type": "component",
-      "repeatable": false,
-      "component": "component.blog-section",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "TestimonialSection": {
       "type": "component",
       "repeatable": false,
@@ -195,17 +195,11 @@
         }
       }
     },
-    "Procedures": {
+    "specialty_details": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::procedure.procedure",
-      "mappedBy": "disease_detail"
-    },
-    "specialities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::speciality.speciality",
-      "mappedBy": "disease_detail"
+      "target": "api::specialty-detail.specialty-detail",
+      "mappedBy": "procedure_detail"
     }
   }
 }

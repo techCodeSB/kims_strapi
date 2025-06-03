@@ -73,6 +73,20 @@ export interface ComponentMeetOurExpertSection extends Struct.ComponentSchema {
   };
 }
 
+export interface ComponentMetaSection extends Struct.ComponentSchema {
+  collectionName: 'components_component_meta_sections';
+  info: {
+    displayName: 'Meta Section';
+  };
+  attributes: {
+    ExtraHeaderCode: Schema.Attribute.Text;
+    MetaDescription: Schema.Attribute.Text;
+    MetaKeyword: Schema.Attribute.String;
+    Metatitle: Schema.Attribute.String;
+    ShortDescription: Schema.Attribute.Text;
+  };
+}
+
 export interface ComponentTestimonialSection extends Struct.ComponentSchema {
   collectionName: 'components_component_testimonial_sections';
   info: {
@@ -95,6 +109,24 @@ export interface ComponentTitleAndImage extends Struct.ComponentSchema {
   };
 }
 
+export interface ComponentViewSection extends Struct.ComponentSchema {
+  collectionName: 'components_component_view_sections';
+  info: {
+    displayName: 'ViewSection';
+  };
+  attributes: {
+    OrderInFeaturedList: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    OrderInMasterList: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    ShowInCMS: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    ShowInFeaturedList: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    ShowingFooter: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    ShowingHeader: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    ViewingMode: Schema.Attribute.Enumeration<['Details Page', 'Popup']>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -104,8 +136,10 @@ declare module '@strapi/strapi' {
       'component.faq-section': ComponentFaqSection;
       'component.hospital-section': ComponentHospitalSection;
       'component.meet-our-expert-section': ComponentMeetOurExpertSection;
+      'component.meta-section': ComponentMetaSection;
       'component.testimonial-section': ComponentTestimonialSection;
       'component.title-and-image': ComponentTitleAndImage;
+      'component.view-section': ComponentViewSection;
     }
   }
 }
